@@ -43,7 +43,9 @@ function MantisBtParserInit(Parser $parser)
 
 function MantisBtTag($input, array $args, Parser $parser, PPFrame $frame)
 {
-  $id = $args['id'];
+  
+  $id = null;
+  if (isset($args['id'])) { $id = $args['id']; }
   if (!is_numeric($id)) { $id = $input; }
   if (!is_numeric($id)) { return ''; }
   return $parser->recursiveTagParse(MantisBtFunc($parser, $id, $input));
